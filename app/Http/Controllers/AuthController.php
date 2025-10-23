@@ -56,7 +56,7 @@ class AuthController extends Controller
             if ($user->role === 'admin') {
                 return redirect()->route('foods.index');
             }
-            return redirect()->route('user.menu');
+            return redirect()->route('home');
         }
 
         return back()->with('error', 'Sai email hoặc mật khẩu!');

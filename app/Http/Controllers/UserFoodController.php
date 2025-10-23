@@ -19,7 +19,7 @@ class UserFoodController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        // --- Lọc theo danh mục (nếu cột 'category' tồn tại) ---
+        // --- Lọc theo danh mục ---
         if ($request->filled('category')) {
             $query->where('category', $request->category);
         }

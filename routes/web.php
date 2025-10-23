@@ -5,6 +5,7 @@ use App\Http\Controllers\FoodController;
 use App\Http\Controllers\UserFoodController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckUserLogin;
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Controllers\CheckoutController;
@@ -14,10 +15,11 @@ use App\Http\Controllers\CheckoutController;
 |--------------------------------------------------------------------------
 */
 
-// Trang mặc định → chuyển hướng đến login
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+// Trang mặc định → chuyển hướng đến trang chủ
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Trang giới thiệu
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 // 🧠 Đăng ký / Đăng nhập / Đăng xuất
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');

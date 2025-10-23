@@ -211,7 +211,13 @@
         @forelse($foods as $food)
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card menu-card shadow">
-                    <img src="{{ asset('storage/' . $food->image) }}" alt="{{ $food->name }}">
+                    @if($food->image && file_exists(public_path('storage/' . $food->image)))
+                        <img src="{{ asset('storage/' . $food->image) }}" alt="{{ $food->name }}">
+                    @else
+                        <div style="height: 200px; background-color: #2c2c2c; display: flex; align-items: center; justify-content: center; color: #666;">
+                            <i class="fas fa-image" style="font-size: 3rem;"></i>
+                        </div>
+                    @endif
                     <div class="card-body">
                         <h5>{{ $food->name }}</h5>
                         <p>{{ number_format($food->price, 0, ',', '.') }} VNĐ</p>
